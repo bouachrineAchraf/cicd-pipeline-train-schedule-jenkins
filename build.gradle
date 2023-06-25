@@ -1,13 +1,11 @@
 plugins {
-  id "com.moowork.node" version "1.2.0"
+  id 'com.moowork.node' version '1.2.0'
 }
 
 node {
-  download = true
-  version = "14.17.1" // Change to a different Node.js version
-  npmVersion = "7.15.1"
+  version = '14.17.1' // Latest LTS version
+  npmVersion = '7.15.1'
 }
-
 
 // Declare a build task
 task build
@@ -28,8 +26,8 @@ task zip(type: Zip) {
 }
 
 // Declare task dependencies
-build.dependsOn zip
-zip.dependsOn npm_run_build
-npm_run_build.dependsOn npm_test
-npm_test.dependsOn npm_install
-npm_run_build.dependsOn npm_install
+build.dependsOn(zip)
+zip.dependsOn(npm_run_build)
+npm_run_build.dependsOn(npm_test)
+npm_test.dependsOn(npm_install)
+npm_run_build.dependsOn(npm_install)
